@@ -81,15 +81,9 @@ fun PaymentDialog(
         CurrencyUtils.parseRupiah(cashPaidInput)
     }
 
-    val changeAmount by remember {
-        derivedStateOf {
-            (cashPaid - totalAmount).coerceAtLeast(0L)
-        }
-    }
+    val changeAmount = (cashPaid - totalAmount).coerceAtLeast(0L)
 
-    val isCashValid by remember {
-        derivedStateOf { cashPaid >= totalAmount }
-    }
+    val isCashValid = cashPaid >= totalAmount
 
     // Cash presets
     val presets = remember(totalAmount) {
